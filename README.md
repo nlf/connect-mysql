@@ -1,3 +1,17 @@
 #connect-mysql
 
-This relies on an already configured node-mysql connection, and is horribly horribly documented (read: not at all)
+This is a very, very simple MySQL backed session store for connect.
+
+It uses an already established [node-mysql](https://github.com/felixge/node-mysql) client for the connection, and creates a 'sessions' table if it doesn't exist.
+
+
+To use:
+```javascript
+var express = require('express'),
+    mysql = require('mysql').createClient({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
+    MySQLStore = require('connect-mysql')(express);
+
+var app = express.createServer();
+app.use(express.cookieParser());
+app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql })));
+```
