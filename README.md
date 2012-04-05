@@ -6,12 +6,10 @@ It uses an already established [node-mysql](https://github.com/felixge/node-mysq
 
 
 To use:
-```javascript
-var express = require('express'),
-    mysql = require('mysql').createClient({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
-    MySQLStore = require('connect-mysql')(express);
-
-var app = express.createServer();
-app.use(express.cookieParser());
-app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql })));
-```
+    var express = require('express'),
+        mysql = require('mysql').createClient({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
+        MySQLStore = require('connect-mysql')(express);
+    
+    var app = express.createServer();
+    app.use(express.cookieParser());
+    app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql })));
