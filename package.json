@@ -2,7 +2,7 @@
   "author": "Nathan LaFreniere <nlf@andyet.net>",
   "name": "connect-mysql",
   "description": "a MySQL session store for connect",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/nathan-lafreniere/connect-mysql",
   "repository": {
     "type": "git",
