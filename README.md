@@ -14,3 +14,6 @@ To use:
     var app = express.createServer();
     app.use(express.cookieParser());
     app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql })));
+
+-----
+License: MIT
