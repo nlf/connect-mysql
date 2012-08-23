@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/nathan-lafreniere/connect-mysql.png)](http://travis-ci.org/nathan-lafreniere/connect-mysql)
 #connect-mysql
 
 This is a very, very simple MySQL backed session store for connect.
