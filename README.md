@@ -15,5 +15,11 @@ To use:
     app.use(express.cookieParser());
     app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql })));
 
+
+Options:
+    
+* client - the mysql client instance
+* cleanup - a boolean specifying whether to enable the cleanup events. note that if this is disabled, cleanup will not take place at all and should be done externally.
+
 -----
 License: MIT
