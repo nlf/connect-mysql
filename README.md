@@ -8,7 +8,7 @@ It uses an already established [node-mysql](https://github.com/felixge/node-mysq
 To use:
 
     var express = require('express'),
-        mysql = require('mysql').createClient({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
+        mysql = require('mysql').createPool({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
         MySQLStore = require('connect-mysql')(express);
     
     var app = express.createServer();
