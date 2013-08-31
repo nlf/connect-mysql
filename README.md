@@ -8,17 +8,22 @@ It uses an already established [node-mysql](https://github.com/felixge/node-mysq
 To use:
 
     var express = require('express'),
-        mysql = require('mysql').createPool({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
+        mysql = require('mysql').createClient({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
         MySQLStore = require('connect-mysql')(express);
     
     var app = express.createServer();
     app.use(express.cookieParser());
     app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql })));
 
+For MySQL pool support:
+
+    ...
+        mysql = require('mysql').createPool({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
+    ...
 
 Options:
     
-* client - the mysql client instance
+* client - the mysql client instance or pool
 * cleanup - a boolean specifying whether to enable the cleanup events. note that if this is disabled, cleanup will not take place at all and should be done externally.
 
 -----
