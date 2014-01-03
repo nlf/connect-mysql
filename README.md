@@ -21,6 +21,13 @@ For MySQL pool support:
         mysql = require('mysql').createPool({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
     ...
 
+For encryption support:
+
+    ...
+        app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql, secret: 'abc123' })));
+    ...
+
+
 Options:
     
 * client - the mysql client instance or pool
