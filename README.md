@@ -1,37 +1,78 @@
 #connect-mysql
 
-This is a very, very simple MySQL backed session store for connect.
+This is a simple MySQL backed session store for connect.
 
-It uses an already established [node-mysql](https://github.com/felixge/node-mysql) client for the connection, and creates a 'sessions' table if it doesn't exist.
-
-
-To use:
-
-    var express = require('express'),
-        mysql = require('mysql').createClient({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
-        MySQLStore = require('connect-mysql')(express);
-    
-    var app = express.createServer();
-    app.use(express.cookieParser());
-    app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql })));
-
-For MySQL pool support:
-
-    ...
-        mysql = require('mysql').createPool({ user: 'dbuser', password: 'dbpassword', database: 'db' }),
-    ...
-
-For encryption support:
-
-    ...
-        app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore({ client: mysql, secret: 'abc123' })));
-    ...
+It uses the [node-mysql](https://github.com/felixge/node-mysql) module already installed in your project to establish and pool connections.
 
 
-Options:
-    
-* client - the mysql client instance or pool
-* cleanup - a boolean specifying whether to enable the cleanup events. note that if this is disabled, cleanup will not take place at all and should be done externally.
+## Usage
+
+```javascript
+var express = require('express'),
+    MySQLStore = require('connect-mysql')(express),
+    options = { 
+    	config: {
+    		user: 'dbuser', 
+    		password: 'dbpassword', 
+    		database: 'db' 
+    	}
+    };
+
+var app = express.createServer();
+app.use(express.cookieParser());
+app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore(options)));
+```
+
+For connection pooling use
+
+```javascript
+...
+	mysql = reqire('mysql'),
+	options = {
+		pool: mysql.createPool({ user: 'dbuser', password: 'dbpassword', database: 'db' })
+	};
+...
+```
+
+Or
+
+```javascript
+...
+	options = {
+		pool: true,
+		config: {
+	    		user: 'dbuser', 
+	    		password: 'dbpassword', 
+	    		database: 'db' 
+	    	}
+    	};
+...
+```
+
+To use session encryption:
+
+```javascript
+...
+	options = {
+		secret: 'thesessionsecret',
+		config: {
+	    		user: 'dbuser', 
+	    		password: 'dbpassword', 
+	    		database: 'db' 
+	    	}
+    	};
+...
+```
+		
+    	
+## Options
+
+* `table`: the name of the database table that should be used for storing sessions. Defaults to `'sessions'`
+* `pool`: a node-mysql connection pool or `true` if the store should instantiate its own pool
+* `config`: the configuration that will be passed to `createConnection()` or `createPool()` if pool is `true`
+* `cleanup`: a boolean specifying whether to enable the cleanup events. note that if this is disabled, cleanup will not take place at all and should be done externally.
+* `secret`: key that will be used to encrypt session data.  If this option is not provided then data will be stored in plain text
+* `algorithm`: the algorithm that should be used to encrypt session data.  Defaults to `'aes-256-ctr'` 
 
 -----
 License: MIT
