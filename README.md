@@ -72,7 +72,7 @@ To use session encryption:
 * `config`: the configuration that will be passed to `createConnection()` or `createPool()` if pool is `true`
 * `cleanup`: a boolean specifying whether to enable the cleanup events. note that if this is disabled, cleanup will not take place at all and should be done externally.
 * `secret`: key that will be used to encrypt session data.  If this option is not provided then data will be stored in plain text
-* `algorithm`: the algorithm that should be used to encrypt session data.  Defaults to `'aes-256-ctr'` 
+* `algorithm`: the algorithm that should be used to encrypt session data.  Defaults to `'aes-256-ctr'`
 
 -----
 License: MIT
