@@ -70,6 +70,8 @@ To use session encryption:
 * `table`: the name of the database table that should be used for storing sessions. Defaults to `'sessions'`
 * `pool`: a node-mysql connection pool or `true` if the store should instantiate its own pool
 * `config`: the configuration that will be passed to `createConnection()` or `createPool()` if pool is `true`
+* `retries`: how many times to retry connecting to the database before failing.  Defaults to `3`
+* `keepalive`: keep pooled connections open by periodically pinging them.  Set to `true` to use the default interval of `30000` ms or provide a positive number to set your own.  Defaults to `true`.
 * `cleanup`: a boolean specifying whether to enable the cleanup events. note that if this is disabled, cleanup will not take place at all and should be done externally.
 * `secret`: key that will be used to encrypt session data.  If this option is not provided then data will be stored in plain text
 * `algorithm`: the algorithm that should be used to encrypt session data.  Defaults to `'aes-256-ctr'`
