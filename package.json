@@ -9,11 +9,10 @@
     "url": "git://github.com/nlf/connect-mysql.git"
   },
   "main": "./index.js",
-  "dependencies": {},
-  "devDependencies": {},
-  "peerDependencies": {
-    "mysql": "~2"
+  "dependencies": {
+    "mysql": "^2.3.1"
   },
+  "devDependencies": {},
   "engines": {
     "node": ">=0.8.19"
   }
