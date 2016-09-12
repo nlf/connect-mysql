@@ -9,7 +9,9 @@ It uses the [node-mysql](https://github.com/felixge/node-mysql) module already i
 
 ```javascript
 var express = require('express'),
-    MySQLStore = require('connect-mysql')(express),
+    session = require('express-session'),
+    cookieParser = require('cookie-parser'),
+    MySQLStore = require('connect-mysql')(session),
     options = { 
     	config: {
     		user: 'dbuser', 
@@ -19,8 +21,8 @@ var express = require('express'),
     };
 
 var app = express.createServer();
-app.use(express.cookieParser());
-app.use(express.session({ secret: 'supersecretkeygoeshere', store: new MySQLStore(options)));
+app.use(cookieParser());
+app.use(session({ secret: 'supersecretkeygoeshere', store: new MySQLStore(options)));
 ```
 
 For connection pooling use
