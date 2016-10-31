@@ -27,7 +27,7 @@ For connection pooling use
 
 ```javascript
 ...
-	mysql = reqire('mysql'),
+	mysql = require('mysql'),
 	options = {
 		pool: mysql.createPool({ user: 'dbuser', password: 'dbpassword', database: 'db' })
 	};
