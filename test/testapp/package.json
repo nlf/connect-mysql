@@ -1,0 +1,19 @@
+{
+  "name": "testapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect-mysql": "^2.1.1",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.8",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "jade": "^1.11.0",
+    "morgan": "^1.8.2",
+    "serve-favicon": "^2.4.3"
+  }
+}
