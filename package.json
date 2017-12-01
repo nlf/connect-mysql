@@ -6,7 +6,7 @@
   ],
   "name": "connect-mysql",
   "description": "a MySQL session store for connect",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "homepage": "https://github.com/nlf/connect-mysql",
   "repository": {
     "type": "git",
