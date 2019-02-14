@@ -14,6 +14,7 @@ It uses the [node-mysql](https://github.com/felixge/node-mysql) module already i
 * `cleanup`: a boolean specifying whether to enable the cleanup events. note that if this is disabled, cleanup will not take place at all and should be done externally.  Sessions with an expiration time of `0` will always be ignored and should also be cleaned up externally.
 * `secret`: key that will be used to encrypt session data.  If this option is not provided then data will be stored in plain text
 * `algorithm`: the algorithm that should be used to encrypt session data.  Defaults to `'aes-256-ctr'`
+* `ivlength`: the length in bytes of the initialization vector (IV) required for the selected algorithm that should be used to encrypt session data.  Defaults to `16`; refer to `crypto.createCipheriv(...)` documentation for more information
 
 
 ## Examples
