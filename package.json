@@ -14,7 +14,7 @@
   },
   "main": "./index.js",
   "dependencies": {
-    "mysql": "^2.14.1"
+    "mysql": "^2.16.0"
   },
   "devDependencies": {},
   "engines": {
