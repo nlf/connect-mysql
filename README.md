@@ -23,24 +23,45 @@ Here are some example use cases to get your application up and running.
 Simple use case using the `express` framework & `connect-session` middleware with `connect-mysql` as the data store.
 
 ```javascript
-var express = require('express'),
-    session = require('connect-session'),
-    MySQLStore = require('connect-mysql')(session),
+var express = require('express'), // express framework
+    session = require('express-session'), // session middleware
+    cookieParser = require('cookie-parser'), // cookie middleware
+    MySQLStore = require('connect-mysql')(session), // mysql session store
     options = {
       config: {
-        user: 'dbuser', 
-        password: 'dbpassword', 
-        database: 'db' 
+        user: 'username', 
+        password: 'password',
+        database: 'databasename' 
       }
-    };
+    },
+    app = express();
 
-var app = express.createServer();
+app.use(cookieParser());
 
-app.use(express.cookieParser());
-app.use(express.session({
-  secret: 'supersecretkeygoeshere',
-  store: new MySQLStore(options))
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: false,
+    secure: false,
+    maxAge: 1000 * 60 * 60 * 24 * 3,
+    expires: 1000 * 60 * 60 * 24 * 3
+  },
+  store: new MySQLStore(options) // Change the express session store
+}));
+
+app.get('/', function (req, res) {
+  if (req.session.views) {
+    req.session.views++
+  } else {
+    req.session.views = 1;
+  }
+
+  res.send('Hello world! '+req.session.views);
 });
+ 
+app.listen(3000, 'localhost');
 ```
 
 ### Connection pooling example
