@@ -18,12 +18,16 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
+<<<<<<< HEAD
   cookie: {
     httpOnly: false,
     secure: false,
     maxAge: 1000 * 60 * 60 * 24 * 3,
     expires: 1000 * 60 * 60 * 24 * 3
   },
+=======
+  cookie: { secure: true },
+>>>>>>> Added test harness and adjusted crypto functions
   store: new MySQLStore(options)
 }));
 
@@ -34,7 +38,14 @@ app.get('/', function (req, res) {
     req.session.views = 1;
   }
 
+<<<<<<< HEAD
   res.send('Hello world! '+req.session.views);
 });
  
 app.listen(3000, 'localhost');
+=======
+  res.send(req.session);
+});
+ 
+app.listen(3000);
+>>>>>>> Added test harness and adjusted crypto functions
