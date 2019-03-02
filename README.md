@@ -4,6 +4,11 @@ This is a simple MySQL backed session store for connect.
 
 It uses the [node-mysql](https://github.com/felixge/node-mysql) module already installed in your project to establish and pool connections.
 
+## Upgrading
+
+Changes introduced in v2.2 mean sessions stored in earlier versions are not backwards compatible with v2.2.
+It it recommended that you clear the session table; alternately sessions will be discarded with a warning message.
+
 ## Options
 
 * `table`: the name of the database table that should be used for storing sessions. Defaults to `'sessions'`
