@@ -5,9 +5,9 @@ var express = require('express'), // express framework
     options = {
       secret: 'squirrel',
       config: {
-        user: 'jas-', 
+        user: 'jas', 
         password: 'password',
-        database: 'c9' 
+        database: 'test'
       }
     },
     app = express();

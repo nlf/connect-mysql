@@ -4,11 +4,12 @@
   "description": "test suite",
   "main": "index.js",
   "dependencies": {
-    "connect": "^3.6.6",
+    "connect": "^3.7.0",
+    "connect-mysql": "^3.0.0",
     "connect-session": "0.0.1",
-    "cookie-parser": "^1.4.4",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6"
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0"
   },
   "devDependencies": {},
   "scripts": {
