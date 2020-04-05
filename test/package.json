@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "connect": "^3.6.6",
+    "connect-mysql": "^2.2.5",
     "connect-session": "0.0.1",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
